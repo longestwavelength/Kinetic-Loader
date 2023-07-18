@@ -1,47 +1,62 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #f7f5f7;
-    font-family: 'Lato', sans-serif;
+    background-color: #55efc4;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
-canvas {
-    border: 2px solid orange;
+.kinetic {
+    position: relative;
+    height: 80px;
+    width: 80px;
 }
 
-.toolbox {
-    background-color: orange;
-    border: 1.5px solid orange;
-    display: flex;
-    width: 603px;
-    padding: 1rem;
+.kinetic::after, .kinetic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-bottom-color: white;
+    animation: rotateA 2s linear infinite 0.5s;
 }
 
-.toolbox > * {
-    background-color: white;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    height: 50px;
-    width: 50px;
-    margin: 0.25rem;
-    padding: 0.25rem;
-    cursor: pointer;
+.kinetic::before {
+    transform: rotate(90deg);
+    animation: rotateB 2s linear infinite;
 }
 
-.toolbox > *:last-child {
-    margin-left: auto;
+@keyframes rotateA {
+    0%, 25% {
+        transform: rotate(0deg);
+    }
+    50%, 75% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
+@keyframes rotateB {
+    0%, 25% {
+        transform: rotate(90deg);
+    }
+    50%, 75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(450deg);
+    }
+}
+
